@@ -1,0 +1,13 @@
+server:
+  port: 18080
+
+spring:
+  jpa:
+    database-platform: com.shortener.url.config.SQLDialect
+    hibernate:
+      ddl-auto: update
+  datasource:
+    url: jdbc:sqlite:url.db
+    driver-class-name: org.sqlite.JDBC
+    username: admin
+    password: admin
