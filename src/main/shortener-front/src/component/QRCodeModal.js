@@ -1,31 +1,32 @@
 import React, {useState} from 'react';
-import Button from "react-bootstrap/Button";
-import Modal from "react-bootstrap/Modal"
+import Button from '@mui/material/Button';
+import Dialog from '@mui/material/Dialog';
+import DialogActions from '@mui/material/DialogActions';
+import DialogContent from '@mui/material/DialogContent';
+import DialogTitle from '@mui/material/DialogTitle';
 import QRCode from "qrcode.react"
 
 const QRCodeModal = (props) => {
-    const [show, setShow] = useState(false);
+    const [open, setOpen] = useState(false);
 
-    const handleClose = () => setShow(false);
-    const handleShow = () => setShow(true);
+    const handleClose = () => setOpen(false);
+    const handleShow = () => setOpen(true);
 
     return (
         <div>
-            <Button variant="primary" onClick={handleShow}>
+            <Button variant="contained" onClick={handleShow}>
                 QR코드 생성
             </Button>
 
-            <Modal show={show} onHide={handleClose} centered>
-                <Modal.Header closeButton>
-                    <Modal.Title>QR코드 생성</Modal.Title>
-                </Modal.Header>
-                <Modal.Body className="text-center">
-                        <QRCode value={props.url}/>
-                </Modal.Body>
-                <Modal.Footer>
-                    <Button variant="secondary" onClick={handleClose}>닫기</Button>
-                </Modal.Footer>
-            </Modal>
+            <Dialog open={open} keepMounted onClose={handleClose} aria-describedby="alert-dialog-slide-description">
+                <DialogTitle>{"QR코드 생성"}</DialogTitle>
+                <DialogContent>
+                    <QRCode value={"https://www.naver.com"}/>
+                </DialogContent>
+                <DialogActions>
+                    <Button onClick={handleClose}>닫기</Button>
+                </DialogActions>
+            </Dialog>
         </div>
     );
 };

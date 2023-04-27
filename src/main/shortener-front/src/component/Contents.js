@@ -1,6 +1,8 @@
 import React, {useState, useRef} from 'react';
-import {Button, Form} from "react-bootstrap";
 import axios from "axios";
+import Button from "@mui/material/Button";
+import FormControl from "@mui/material/FormControl";
+import TextField from "@mui/material/TextField";
 
 import QRCodeModal from "./QRCodeModal";
 
@@ -26,16 +28,15 @@ const Contents = props => {
     return (
         <div>
             <main>
-                <Form>
-                    <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
-                        <Form.Label>URL</Form.Label>
-                        <Form.Control type="text" placeholder="URL" ref={inputURL} />
-                        <Form.Label>Result</Form.Label>
-                        <Form.Control type="text" value={result} />
-                        <Button variant="primary" onClick={convert}>단축 URL 생성</Button>
-                        <QRCodeModal url={result}/>
-                    </Form.Group>
-                </Form>
+                <FormControl>
+                    <br/>
+                    <TextField label="inputURL" type="url" variant="outlined" ref={inputURL} />
+                    <br/>
+                    <TextField label="result" type="url" variant="outlined" value={result} />
+                    <br/>
+                    <Button variant="contained" onClick={convert}>단축 URL 생성</Button>
+                </FormControl>
+                <QRCodeModal url={result}/>
             </main>
         </div>
     );
