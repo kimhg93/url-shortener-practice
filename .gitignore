@@ -35,3 +35,7 @@ out/
 
 ### VS Code ###
 .vscode/
+
+### react 빌드하면 생기는거 제외
+/src/main/resources/static/static/
+/src/main/resources/static/*.*
